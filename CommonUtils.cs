@@ -23,8 +23,7 @@ namespace Install.IO_Pro
 
         public class ProjectConfig
         {
-            public string Title { get; set; } = "FormTitle";
-            public string Mode { get; set; } = "Production";
+            public bool DeveloperMode { get; set; } = true;
             public int UpdateSpeed { get; set; } = 1000;
             public ThemeConfig Theme { get; set; } = new();
             public List<MenuConfig> Menus { get; set; } = new List<MenuConfig>();
@@ -44,7 +43,6 @@ namespace Install.IO_Pro
             public string UUID { get; set; } = "d8984f1a-6efc-4409-be01-352f2d73e292";
             public List<TextObject> TextObjects { get; set; } = new List<TextObject>();
             public List<PanelObject> PanelObjects { get; set; } = new List<PanelObject>();
-            public bool Enabled { get; set; } = false;
         }
         public class TextObject
         {

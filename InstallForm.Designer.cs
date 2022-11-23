@@ -57,8 +57,7 @@ namespace Install.IO_Pro
                                 File.ReadAllText("config.json"),
                                 jsonSerializerOptions);
 
-                        if (config.Mode.ToLower() == "publish" || config.Mode.ToLower().Contains("pro"))
-                            ProductionMode = true;
+                        ProductionMode = !config.DeveloperMode;
                         Update(config, ProductionMode);
 
                         while (!StillUpdating)
@@ -272,12 +271,14 @@ namespace Install.IO_Pro
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.LoadingLabel = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.FooterPanel__.SuspendLayout();
             this.SuspendLayout();
             // 
             // FooterPanel__
             // 
-            this.FooterPanel__.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.FooterPanel__.BackColor = System.Drawing.Color.Indigo;
             this.FooterPanel__.Controls.Add(this.DownloadBar);
             this.FooterPanel__.Controls.Add(this.NextPage__);
             this.FooterPanel__.Controls.Add(this.InstallBar);
@@ -368,19 +369,42 @@ namespace Install.IO_Pro
             // LoadingLabel
             // 
             this.LoadingLabel.AutoSize = true;
-            this.LoadingLabel.Font = new System.Drawing.Font("Segoe UI", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LoadingLabel.Location = new System.Drawing.Point(259, 130);
+            this.LoadingLabel.Font = new System.Drawing.Font("Segoe UI", 40F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LoadingLabel.ForeColor = System.Drawing.SystemColors.Control;
+            this.LoadingLabel.Location = new System.Drawing.Point(277, 117);
             this.LoadingLabel.Name = "LoadingLabel";
-            this.LoadingLabel.Size = new System.Drawing.Size(192, 54);
+            this.LoadingLabel.Size = new System.Drawing.Size(257, 72);
             this.LoadingLabel.TabIndex = 1;
             this.LoadingLabel.Text = "LOADING";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(308, 238);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(196, 31);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Click Here To Create";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.Snow;
+            this.label1.Location = new System.Drawing.Point(369, 189);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(66, 15);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "config.json";
             // 
             // InstallForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(784, 392);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.LoadingLabel);
             this.Controls.Add(this.FooterPanel__);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
@@ -403,5 +427,7 @@ namespace Install.IO_Pro
         private Panel panel1;
         private Panel panel2;
         private Label LoadingLabel;
+        private Button button1;
+        private Label label1;
     }
 }

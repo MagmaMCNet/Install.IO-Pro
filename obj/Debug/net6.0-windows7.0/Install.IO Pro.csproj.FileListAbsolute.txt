@@ -7,10 +7,6 @@ M:\VisualStudio\Install.IO Pro\bin\Debug\net6.0-windows7.0\Spectre.Console.dll
 M:\VisualStudio\Install.IO Pro\obj\Debug\net6.0-windows7.0\Install.IO Pro.csproj.AssemblyReference.cache
 M:\VisualStudio\Install.IO Pro\obj\Debug\net6.0-windows7.0\Install.IO_Pro.InstallForm.resources
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
-M:\VisualStudio\Install.IO Pro\obj\Debug\net6.0-windows7.0\Install.IO_Pro.PublisherSetup.resources
->>>>>>> 0e28a583dbe8804c8a7b9051200bc83ad338929b
 =======
 M:\VisualStudio\Install.IO Pro\obj\Debug\net6.0-windows7.0\Install.IO_Pro.PublisherSetup.resources
 >>>>>>> 0e28a583dbe8804c8a7b9051200bc83ad338929b
@@ -24,3 +20,5 @@ M:\VisualStudio\Install.IO Pro\obj\Debug\net6.0-windows7.0\Install.IO Pro.dll
 M:\VisualStudio\Install.IO Pro\obj\Debug\net6.0-windows7.0\refint\Install.IO Pro.dll
 M:\VisualStudio\Install.IO Pro\obj\Debug\net6.0-windows7.0\Install.IO Pro.genruntimeconfig.cache
 M:\VisualStudio\Install.IO Pro\obj\Debug\net6.0-windows7.0\ref\Install.IO Pro.dll
+M:\VisualStudio\Install.IO Pro\bin\Debug\net6.0-windows7.0\Install.IO Pro.pdb
+M:\VisualStudio\Install.IO Pro\obj\Debug\net6.0-windows7.0\Install.IO Pro.pdb
