@@ -5,10 +5,13 @@
   </PropertyGroup>
   <ItemGroup>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <Compile Update="InstallForm.cs">
       <SubType>Form</SubType>
     </Compile>
 =======
+=======
+>>>>>>> 0e28a583dbe8804c8a7b9051200bc83ad338929b
     <Compile Update="WindowsForms\RoundButton.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -18,6 +21,9 @@
     <Compile Update="PublisherSetup.cs">
       <SubType>Form</SubType>
     </Compile>
+<<<<<<< HEAD
+>>>>>>> 0e28a583dbe8804c8a7b9051200bc83ad338929b
+=======
 >>>>>>> 0e28a583dbe8804c8a7b9051200bc83ad338929b
     <Compile Update="WindowsForms\BetterButtons.cs">
       <SubType>Component</SubType>
