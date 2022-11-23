@@ -9,15 +9,15 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <StartupObject>Install.IO_Pro.Startup</StartupObject>
     <ApplicationIcon>Images\Install.IO Pro.ico</ApplicationIcon>
-    <ProduceReferenceAssembly>True</ProduceReferenceAssembly> 
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DebugType>embedded</DebugType>
+    <ProduceReferenceAssembly>True</ProduceReferenceAssembly>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DebugType>embedded</DebugType>
+    <DebugType>none</DebugType>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>full</DebugType>
   </PropertyGroup>
 
   <ItemGroup>
