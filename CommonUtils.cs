@@ -24,7 +24,8 @@ namespace Install.IO_Pro
         public class ProjectConfig
         {
             public bool DeveloperMode { get; set; } = true;
-            public int UpdateSpeed { get; set; } = 1000;
+            public int UpdateSpeed { get; set; } = 2500;
+            public string _INFO_ { get; set; } = "There Is A Problem With Stack Overflow And Memory Usage When Having DeveloperMode Enabled Use With Warning";
             public ThemeConfig Theme { get; set; } = new();
             public List<MenuConfig> Menus { get; set; } = new List<MenuConfig>();
             public List<Installable> Installables { get; set; } = new List<Installable>();
