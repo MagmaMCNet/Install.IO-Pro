@@ -1,0 +1,108 @@
+{
+  "Title": "FormTitle",
+  "Mode": "Dev",
+  "UpdateSpeed": 100,
+  "Theme": {
+    "BackgroundColor": "#303336",
+    "AltBackgroundColor": "#1E1E21",
+    "TextColor": "#ffffff",
+    "AccentColor": "#E24F00"
+  },
+  "Menus": [
+    {
+      "Title": "Install.IO Pro - Example",
+      "UUID": "tv",
+      "TextObjects": [
+        {
+          "Text": "Install Options",
+          "TextColor": "#E24F00",
+          "BackgroundColor": "#1E1E21",
+          "ZIndex": 4,
+          "Position": {
+            "IsEmpty": false,
+            "X": 180,
+            "Y": 0
+          },
+          "Font": {
+            "Name": "Comic Sans MS",
+            "Size": 40
+          }
+        }
+      ],
+      "PanelObjects": [
+        {
+          "PanelColor": "#1E1E21",
+          "ZIndex": 1,
+          "Position": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": false,
+            "X": 800,
+            "Y": 80
+          }
+        }
+      ],
+      "Enabled": false
+    },
+    {
+      "Title": "asasd",
+      "UUID": "dfdsc",
+      "TextObjects": [
+        {
+          "Text": "Install Options",
+          "TextColor": "#E24F00",
+          "BackgroundColor": "#1E1E21",
+          "ZIndex": 4,
+          "Position": {
+            "IsEmpty": false,
+            "X": 180,
+            "Y": 0
+          },
+          "Font": {
+            "Name": "Comic Sans MS",
+            "Size": 40
+          }
+        }
+      ],
+      "PanelObjects": [
+        {
+          "PanelColor": "#1E1E21",
+          "ZIndex": 1,
+          "Position": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": false,
+            "X": 800,
+            "Y": 80
+          }
+        }
+      ],
+      "Enabled": false
+    }
+  ],
+  "Installables": [
+    {
+      "UUID": "asdads",
+      "Url": "https://cdn.ahostingwebsite.com/afile.zip",
+      "InstallDir": "C:\\Program Files\\",
+      "InstallFolder": "Install_Folder_example",
+      "CheckBox": {
+        "ZIndex": 2,
+        "Position": {
+          "IsEmpty": false,
+          "X": 100,
+          "Y": 200
+        },
+        "Enabled": true,
+        "Visable": true,
+        "Menu_UUID": "tv"
+      }
+    }
+  ]
+}

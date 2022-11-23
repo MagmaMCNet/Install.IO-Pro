@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_LastSelectedProfileId>M:\VisualStudio\Install.IO Pro\Properties\PublishProfiles\FolderProfile.pubxml</_LastSelectedProfileId>
+  </PropertyGroup>
+  <ItemGroup>
+<<<<<<< HEAD
+    <Compile Update="InstallForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+=======
+    <Compile Update="WindowsForms\RoundButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="InstallForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="PublisherSetup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+>>>>>>> 0e28a583dbe8804c8a7b9051200bc83ad338929b
+    <Compile Update="WindowsForms\BetterButtons.cs">
+      <SubType>Component</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>

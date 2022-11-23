@@ -1,0 +1,1 @@
+"C:\Program Files (x86)\Eziriz\.NET Reactor\dotNET_Reactor.Console.exe" -quiet -file "Install.IO Pro.exe\Install.IO Pro.dll" -antitamp 1 -anti_debug 1 -control_flow 1 -flow_level 2 -suppressildasm 0 -necrobit 1
