@@ -39,47 +39,44 @@ namespace Install.IO_Pro
         };
         public int CurrentMenu = 0;
         public List<object> DefualtObjects = new List<object>();
-        public List<List<Control>> Scene = new List<List<Control>>();
 
-        bool Production = true;
-        bool last = false;
+        bool ProductionMode = false;
+        bool StillUpdating = false;
         protected void OnLoad()
         {
             Task.Run(() =>
             {
+                Thread.Sleep(100); // Let Program Start
                 while (true)
                 {
                     try
                     {
 
-                        CommonUitils.ProjectConfig config =
-                            JsonSerializer.Deserialize<CommonUitils.ProjectConfig>(
+                        CommonUtils.ProjectConfig config =
+                            JsonSerializer.Deserialize<CommonUtils.ProjectConfig>(
                                 File.ReadAllText("config.json"),
                                 jsonSerializerOptions);
 
                         if (config.Mode.ToLower() == "publish" || config.Mode.ToLower().Contains("pro"))
-                        {
-                            if (last)
-                                MessageBox.Show("Dev Mode Disabled,\nPlease Chnage In Config And Reopen To Enable", "-DEV", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            Production = true;
+                            ProductionMode = true;
+                        Update(config, ProductionMode);
 
-                        }
-                        else
-                        {
-                            Production = false;
-                            last = true;
-                        }
-                        Update(config, Production);
-                        if (Production)
+                        while (!StillUpdating)
+                            Thread.Sleep(50); // Wait For Frame To Finish Rendering
+
+                        if (ProductionMode)
                             break;
-                    Thread.Sleep((int)(config.UpdateSpeed*1.5));
+
+                    Thread.Sleep( (int)(config.UpdateSpeed) ); // Sleep For User Defined Time
                     }
-                    catch { Thread.Sleep(1000); }
+                    catch { Thread.Sleep(2000); /* Config Not Found */ }
                 }
             });
         }
-        private void Update(CommonUitils.ProjectConfig config, bool Production)
+
+        private void Update(CommonUtils.ProjectConfig config, bool Production)
         {
+            StillUpdating = true;
             try
             {
                 this.BeginInvoke((MethodInvoker)delegate
@@ -96,7 +93,8 @@ namespace Install.IO_Pro
                     this.Text = Production ? config.Menus[CurrentMenu].Title: config.Menus[CurrentMenu].Title + " -dev";
                     this.Name = Production ? config.Menus[CurrentMenu].Title: config.Menus[CurrentMenu].Title + " -dev";
 
-                    foreach (CommonUitils.TextObject Text in config.Menus[CurrentMenu].TextObjects)
+                    #region Get Config Objects
+                    foreach (CommonUtils.TextObject Text in config.Menus[CurrentMenu].TextObjects)
                     {
                         Label label = new Label();
                         label.Text = Text.Text;
@@ -112,7 +110,7 @@ namespace Install.IO_Pro
                         label.Size = new System.Drawing.Size((int)((Text.Font.Size * Text.Text.Length)*0.8f), (int)(Text.Font.Size * 1.7f));
                         NewControls.Add(label);
                     }
-                    foreach (CommonUitils.PanelObject panelObject in config.Menus[CurrentMenu].PanelObjects)
+                    foreach (CommonUtils.PanelObject panelObject in config.Menus[CurrentMenu].PanelObjects)
                     {
                         Panel panel = new Panel();
 
@@ -123,7 +121,7 @@ namespace Install.IO_Pro
                         NewControls.Add(panel);
                     }
 
-                    foreach (CommonUitils.Installable InstallObject in config.Installables)
+                    foreach (CommonUtils.Installable InstallObject in config.Installables)
                     {
                         if (config.Menus[CurrentMenu].UUID == InstallObject.CheckBox.Menu_UUID && InstallObject.CheckBox.Visable)
                         {
@@ -149,15 +147,24 @@ namespace Install.IO_Pro
                         if (obj.BackColor == Color.Azure)
                         {
                             obj.BackColor = ColorTranslator.FromHtml(config.Theme.AltBackgroundColor);
-                            ((BetterButtons)obj).BorderColor = ColorTranslator.FromHtml(config.Theme.AccentColor);
-                        }
+                            try
+                            {
+                                ((BetterButtons)obj).BorderColor = ColorTranslator.FromHtml(config.Theme.AccentColor);
+                            } catch
+                            {
+                                obj.BackColor = ColorTranslator.FromHtml(config.Theme.AccentColor);
+                            }
+                            }
                     }
+                    #endregion
 
                     foreach (Control obj in DefualtObjects)
                     {
                         obj.ForeColor = ColorTranslator.FromHtml(config.Theme.TextColor);
                         NewControls.Add(obj);
                     }
+
+                    Thread.Sleep(5); // Stop High CPU Usage
                     int rid = 0;
                     while (this.Controls.Count > rid)
                     {
@@ -178,6 +185,7 @@ namespace Install.IO_Pro
 
             }
             catch {}
+            StillUpdating = false;
         }
 
 
@@ -187,12 +195,12 @@ namespace Install.IO_Pro
             {
                 this.BeginInvoke((MethodInvoker)delegate
                 {
-                    CommonUitils.ProjectConfig config =
-                            JsonSerializer.Deserialize<CommonUitils.ProjectConfig>(
+                    CommonUtils.ProjectConfig config =
+                            JsonSerializer.Deserialize<CommonUtils.ProjectConfig>(
                                 File.ReadAllText("config.json"),
                                 jsonSerializerOptions);
                     int obj = 0;
-                    foreach (CommonUitils.Installable installobject in config.Installables)
+                    foreach (CommonUtils.Installable installobject in config.Installables)
                     {
                         if (installobject.UUID == ((CheckBox)sender).Name)
                         {
@@ -201,9 +209,7 @@ namespace Install.IO_Pro
                         obj++;
                     }
                     config.Installables[obj].CheckBox.Enabled = !config.Installables[obj].CheckBox.Enabled;
-                    File.WriteAllText("config.json", JsonSerializer.Serialize<CommonUitils.ProjectConfig>(config, jsonSerializerOptions));
-                    if (!Production)
-                        Update(config, Production);
+                    File.WriteAllText("config.json", JsonSerializer.Serialize<CommonUtils.ProjectConfig>(config, jsonSerializerOptions));
                 });
             }
             catch { }
@@ -213,8 +219,8 @@ namespace Install.IO_Pro
 
             try
             {
-                CommonUitils.ProjectConfig config =
-                        JsonSerializer.Deserialize<CommonUitils.ProjectConfig>(
+                CommonUtils.ProjectConfig config =
+                        JsonSerializer.Deserialize<CommonUtils.ProjectConfig>(
                             File.ReadAllText("config.json"),
                             jsonSerializerOptions);
 
@@ -222,7 +228,7 @@ namespace Install.IO_Pro
                 if (config.Menus.Count-1 > CurrentMenu)
                 {
                     CurrentMenu++;
-                    Update(config, Production);
+                    Update(config, ProductionMode);
                 }
             } catch(Exception e)
             {
@@ -234,8 +240,8 @@ namespace Install.IO_Pro
         {
             try
             {
-                CommonUitils.ProjectConfig config =
-                        JsonSerializer.Deserialize<CommonUitils.ProjectConfig>(
+                CommonUtils.ProjectConfig config =
+                        JsonSerializer.Deserialize<CommonUtils.ProjectConfig>(
                             File.ReadAllText("config.json"),
                             jsonSerializerOptions);
 
@@ -243,7 +249,7 @@ namespace Install.IO_Pro
                 if (0 < CurrentMenu)
                 {
                     CurrentMenu--;
-                    Update(config, Production);
+                    Update(config, ProductionMode);
                 }
             }
             catch { }
@@ -260,9 +266,12 @@ namespace Install.IO_Pro
         {
             this.FooterPanel__ = new System.Windows.Forms.Panel();
             this.DownloadBar = new System.Windows.Forms.ProgressBar();
-            this.InstallBar = new System.Windows.Forms.ProgressBar();
             this.NextPage__ = new Install.IO_Pro.WindowsForms.BetterButtons();
+            this.InstallBar = new System.Windows.Forms.ProgressBar();
             this.BackPage__ = new Install.IO_Pro.WindowsForms.BetterButtons();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.LoadingLabel = new System.Windows.Forms.Label();
             this.FooterPanel__.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -273,6 +282,8 @@ namespace Install.IO_Pro
             this.FooterPanel__.Controls.Add(this.NextPage__);
             this.FooterPanel__.Controls.Add(this.InstallBar);
             this.FooterPanel__.Controls.Add(this.BackPage__);
+            this.FooterPanel__.Controls.Add(this.panel1);
+            this.FooterPanel__.Controls.Add(this.panel2);
             this.FooterPanel__.Location = new System.Drawing.Point(-9, 311);
             this.FooterPanel__.Name = "FooterPanel__";
             this.FooterPanel__.Size = new System.Drawing.Size(804, 90);
@@ -287,16 +298,6 @@ namespace Install.IO_Pro
             this.DownloadBar.Size = new System.Drawing.Size(438, 23);
             this.DownloadBar.Step = 5;
             this.DownloadBar.TabIndex = 13;
-            // 
-            // InstallBar
-            // 
-            this.InstallBar.BackColor = System.Drawing.SystemColors.ControlText;
-            this.InstallBar.Location = new System.Drawing.Point(182, 46);
-            this.InstallBar.MarqueeAnimationSpeed = 10;
-            this.InstallBar.Name = "InstallBar";
-            this.InstallBar.Size = new System.Drawing.Size(438, 23);
-            this.InstallBar.Step = 5;
-            this.InstallBar.TabIndex = 12;
             // 
             // NextPage__
             // 
@@ -318,6 +319,16 @@ namespace Install.IO_Pro
             this.NextPage__.UseVisualStyleBackColor = false;
             this.NextPage__.Click += new System.EventHandler(this.NextPage_Click);
             // 
+            // InstallBar
+            // 
+            this.InstallBar.BackColor = System.Drawing.SystemColors.ControlText;
+            this.InstallBar.Location = new System.Drawing.Point(182, 46);
+            this.InstallBar.MarqueeAnimationSpeed = 10;
+            this.InstallBar.Name = "InstallBar";
+            this.InstallBar.Size = new System.Drawing.Size(438, 23);
+            this.InstallBar.Step = 5;
+            this.InstallBar.TabIndex = 12;
+            // 
             // BackPage__
             // 
             this.BackPage__.BackColor = System.Drawing.Color.Azure;
@@ -338,12 +349,39 @@ namespace Install.IO_Pro
             this.BackPage__.UseVisualStyleBackColor = false;
             this.BackPage__.Click += new System.EventHandler(this.BackPage_Click_1);
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Azure;
+            this.panel1.Location = new System.Drawing.Point(179, 15);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(444, 29);
+            this.panel1.TabIndex = 0;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Azure;
+            this.panel2.Location = new System.Drawing.Point(179, 43);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(444, 29);
+            this.panel2.TabIndex = 1;
+            // 
+            // LoadingLabel
+            // 
+            this.LoadingLabel.AutoSize = true;
+            this.LoadingLabel.Font = new System.Drawing.Font("Segoe UI", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LoadingLabel.Location = new System.Drawing.Point(259, 130);
+            this.LoadingLabel.Name = "LoadingLabel";
+            this.LoadingLabel.Size = new System.Drawing.Size(192, 54);
+            this.LoadingLabel.TabIndex = 1;
+            this.LoadingLabel.Text = "LOADING";
+            // 
             // InstallForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(784, 392);
+            this.Controls.Add(this.LoadingLabel);
             this.Controls.Add(this.FooterPanel__);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
@@ -351,6 +389,7 @@ namespace Install.IO_Pro
             this.Load += new System.EventHandler(this.InstallForm_Load);
             this.FooterPanel__.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -361,5 +400,8 @@ namespace Install.IO_Pro
         private WindowsForms.BetterButtons NextPage__;
         private ProgressBar DownloadBar;
         private ProgressBar InstallBar;
+        private Panel panel1;
+        private Panel panel2;
+        private Label LoadingLabel;
     }
 }
