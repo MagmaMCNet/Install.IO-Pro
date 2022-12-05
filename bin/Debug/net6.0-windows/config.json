@@ -1,0 +1,90 @@
+  {
+  "DeveloperMode": true,
+  "UpdateSpeed": 750,
+  "Theme": {
+    "BackgroundColor": "#303336",
+    "AltBackgroundColor": "#1E1E21",
+    "TextColor": "#ffffff",
+    "AccentColor": "#ffffff"
+  },
+  "Menus": [
+    {
+      "Title": "None",
+      "UUID": "d8984f1a-6efc-4409-be01-352f2d73e292",
+      "TextObjects": [
+        {
+          "Text": "Test Title",
+          "TextColor": "#ffffff",
+          "BackgroundColor": "#303336",
+          "ZIndex": 1,
+          "Position": {
+            "IsEmpty": false,
+            "X": 300,
+            "Y": 0
+          },
+          "Font": {
+            "Name": "Segoe UI",
+            "Size": 30
+          }
+        }
+      ],
+      "PanelObjects": [
+        {
+          "PanelColor": "#1E1E21",
+          "ZIndex": 1,
+          "Position": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          }
+        }
+      ]
+    }
+  ],
+  "InstallMenu": {
+    "Title": "None",
+    "UUID": "d8984f1a-6efc-4409-be01-352f2d73e292",
+    "TextObjects": [
+      {
+        "Text": "None",
+        "TextColor": "#ffffff",
+        "BackgroundColor": "#303336",
+        "ZIndex": 1,
+        "Position": {
+          "IsEmpty": true,
+          "X": 0,
+          "Y": 0
+        },
+        "Font": {
+          "Name": "Segoe UI",
+          "Size": 12
+        }
+      }
+    ],
+    "PanelObjects": []
+  },
+  "Installables": [
+    {
+      "UUID": "62cf7517-6fb8-40d2-93b0-e3416e2aaecd",
+      "Url": "https://cdn.ahostingwebsite.com/afile.zip",
+      "InstallDir": "C:\\Program Files\\",
+      "InstallFolder": "Application_Example",
+      "CheckBox": {
+        "ZIndex": 1,
+        "Position": {
+          "IsEmpty": false,
+          "X": 100,
+          "Y": 200
+        },
+        "Enabled": false,
+        "Visable": true,
+        "Menu_UUID": "d8984f1a-6efc-4409-be01-352f2d73e292"
+      }
+    }
+  ]
+}

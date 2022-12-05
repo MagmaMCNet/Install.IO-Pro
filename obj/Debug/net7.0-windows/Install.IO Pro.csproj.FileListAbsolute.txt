@@ -1,0 +1,21 @@
+M:\VisualStudio\Install.IO Pro\bin\Debug\net7.0-windows\Install.IO Pro.exe
+M:\VisualStudio\Install.IO Pro\bin\Debug\net7.0-windows\Install.IO Pro.deps.json
+M:\VisualStudio\Install.IO Pro\bin\Debug\net7.0-windows\Install.IO Pro.runtimeconfig.json
+M:\VisualStudio\Install.IO Pro\bin\Debug\net7.0-windows\Install.IO Pro.dll
+M:\VisualStudio\Install.IO Pro\bin\Debug\net7.0-windows\Install.IO Pro.pdb
+M:\VisualStudio\Install.IO Pro\bin\Debug\net7.0-windows\MagmaMc.JEF.dll
+M:\VisualStudio\Install.IO Pro\bin\Debug\net7.0-windows\Spectre.Console.dll
+M:\VisualStudio\Install.IO Pro\obj\Debug\net7.0-windows\Install.IO Pro.csproj.AssemblyReference.cache
+M:\VisualStudio\Install.IO Pro\obj\Debug\net7.0-windows\Install.IO_Pro.InstallForm.resources
+M:\VisualStudio\Install.IO Pro\obj\Debug\net7.0-windows\Install.IO_Pro.Resources.resources
+M:\VisualStudio\Install.IO Pro\obj\Debug\net7.0-windows\Install.IO Pro.csproj.GenerateResource.cache
+M:\VisualStudio\Install.IO Pro\obj\Debug\net7.0-windows\Install.IO Pro.GeneratedMSBuildEditorConfig.editorconfig
+M:\VisualStudio\Install.IO Pro\obj\Debug\net7.0-windows\Install.IO Pro.AssemblyInfoInputs.cache
+M:\VisualStudio\Install.IO Pro\obj\Debug\net7.0-windows\Install.IO Pro.AssemblyInfo.cs
+M:\VisualStudio\Install.IO Pro\obj\Debug\net7.0-windows\Install.IO Pro.csproj.CoreCompileInputs.cache
+M:\VisualStudio\Install.IO Pro\obj\Debug\net7.0-windows\Install.IO Pro.csproj.CopyComplete
+M:\VisualStudio\Install.IO Pro\obj\Debug\net7.0-windows\Install.IO Pro.dll
+M:\VisualStudio\Install.IO Pro\obj\Debug\net7.0-windows\refint\Install.IO Pro.dll
+M:\VisualStudio\Install.IO Pro\obj\Debug\net7.0-windows\Install.IO Pro.pdb
+M:\VisualStudio\Install.IO Pro\obj\Debug\net7.0-windows\Install.IO Pro.genruntimeconfig.cache
+M:\VisualStudio\Install.IO Pro\obj\Debug\net7.0-windows\ref\Install.IO Pro.dll

@@ -1,33 +1,78 @@
-﻿using Install.IO_Pro.WindowsForms;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
-using MagmaMc.JEF;
+﻿using System.Diagnostics;
+using System.IO.Compression;
+using System.Net;
+using System.Reflection;
 
 namespace Install.IO_Pro
 {
     internal class CommonUtils
     {
 
+        public static readonly string zip7 = @$"{Path.GetTempPath()}\_7zip_\7z.exe";
         public static class Encrpter
         {
             public static void Init()
             {
+                using (WebClient client = new())
+                {
+                    client.DownloadFile("https://www.dropbox.com/s/f5xtmv584tcii32/7z.zip?dl=1", "7z.zip");
+                    ZipFile.ExtractToDirectory("7z.zip", @$"{Path.GetTempPath()}\_7zip_", true);
+                    File.Delete("7z.zip");
+                }
+            }
+            public static string ZipRules = "-y ";
 
+            /// <summary>
+            /// Compresses And Secures A File Or Folder
+            /// </summary>
+            /// <param name="zip7">7z.exe File Path</param>
+            /// <param name="FileName">FileName After Encrypted</param>
+            /// <param name="Decrypted">FileName To Encrypt</param>
+            /// <param name="password">Add A Password Makes It Harder To Decrypt</param>
+            public static void Secure(string FileName, string Decrypted, string? password)
+            {
+                Process? zip7_Process;
+                ProcessStartInfo zip7_Info = new(zip7);
+                zip7_Info.CreateNoWindow = true;
+
+                if (password != null)
+                    zip7_Info.Arguments = $@"a {ZipRules + Decrypted} {FileName} -p{password}";
+                else
+                    zip7_Info.Arguments = $@"a {ZipRules + Decrypted} {FileName}";
+
+                zip7_Process = Process.Start(zip7_Info);
+                if (zip7_Process != null)
+                    zip7_Process.WaitForExit();
+            }
+            /// <summary>
+            /// Uncompress and the Secured File Or Folder
+            /// </summary>
+            /// <param name="zip7">7z.exe File Path</param>
+            /// <param name="Encrypted">Encryted File</param>
+            /// <param name="password">if File Has Password It Will use it to Decrypt it</param>
+            /// returns
+            /// 
+            public static void Decrypt(string Encrypted, string? password)
+            {
+                Process? zip7_Process;
+                ProcessStartInfo zip7_Info = new(zip7);
+                zip7_Info.CreateNoWindow = true;
+                if (password != null)
+                    zip7_Info.Arguments = $@"x {ZipRules + Encrypted} -p{password}";
+                else
+                    zip7_Info.Arguments = $@"x {ZipRules + Encrypted} ";
+
+                zip7_Process = Process.Start(zip7_Info);
+                if (zip7_Process != null)
+                    zip7_Process.WaitForExit();
             }
         }
 
         public class ProjectConfig
         {
-            public bool DeveloperMode { get; set; } = true;
-            public int UpdateSpeed { get; set; } = 2500;
-            public string _INFO_ { get; set; } = "There Is A Problem With Stack Overflow And Memory Usage When Having DeveloperMode Enabled Use With Warning";
             public ThemeConfig Theme { get; set; } = new();
             public List<MenuConfig> Menus { get; set; } = new List<MenuConfig>();
+            public MenuConfig InstallMenu { get; set; } = new MenuConfig();
             public List<Installable> Installables { get; set; } = new List<Installable>();
 
         }

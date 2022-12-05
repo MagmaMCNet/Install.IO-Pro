@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net6.0-windows7.0</TargetFramework>
+    <TargetFramework>net7.0-windows</TargetFramework>
     <RootNamespace>Install.IO_Pro</RootNamespace>
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
@@ -10,19 +10,26 @@
     <StartupObject>Install.IO_Pro.Startup</StartupObject>
     <ApplicationIcon>Images\Install.IO Pro.ico</ApplicationIcon>
     <ProduceReferenceAssembly>True</ProduceReferenceAssembly>
+    <_SuppressWinFormsTrimError>true</_SuppressWinFormsTrimError>
+    <PublishTrimmed>true</PublishTrimmed>
+    <PlatformTarget>x64</PlatformTarget>
+    <SignAssembly>False</SignAssembly>
+    <DelaySign>False</DelaySign>
+    <Authors>MagmaMc</Authors>
+    <Company>Magma, inc</Company>
+    <Copyright>MIT</Copyright>
   </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DebugType>none</DebugType>
-  </PropertyGroup>
-
+  
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DebugType>full</DebugType>
+    <Optimize>False</Optimize>
+    <FileAlignment>512</FileAlignment>
   </PropertyGroup>
-
-  <ItemGroup>
-    <None Remove="LICENSE.txt" />
-  </ItemGroup>
+  
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DebugType>none</DebugType>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
 
   <ItemGroup>
     <Content Include="Images\Install.IO Pro.ico" />
@@ -30,6 +37,27 @@
 
   <ItemGroup>
     <PackageReference Include="MagmaMc.JEF" Version="3.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="TODO.MD">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

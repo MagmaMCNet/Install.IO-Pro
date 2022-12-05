@@ -1,0 +1,9 @@
+M:\VisualStudio\Install.IO Pro\publish\Install.IO Pro.exe
+M:\VisualStudio\Install.IO Pro\publish\Install.IO Pro.dll
+M:\VisualStudio\Install.IO Pro\publish\Install.IO Pro.deps.json
+M:\VisualStudio\Install.IO Pro\publish\Install.IO Pro.runtimeconfig.json
+M:\VisualStudio\Install.IO Pro\publish\Install.IO Pro.pdb
+M:\VisualStudio\Install.IO Pro\publish\Microsoft.Windows.SDK.NET.dll
+M:\VisualStudio\Install.IO Pro\publish\WinRT.Runtime.dll
+M:\VisualStudio\Install.IO Pro\publish\MagmaMc.JEF.dll
+M:\VisualStudio\Install.IO Pro\publish\Spectre.Console.dll

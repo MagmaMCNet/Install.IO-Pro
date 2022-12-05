@@ -1,0 +1,22 @@
+M:\VisualStudio\Install.IO Pro\bin\Release\net6.0-windows10.0.19041.0\win-x64\Install.IO Pro.exe
+M:\VisualStudio\Install.IO Pro\bin\Release\net6.0-windows10.0.19041.0\win-x64\Install.IO Pro.deps.json
+M:\VisualStudio\Install.IO Pro\bin\Release\net6.0-windows10.0.19041.0\win-x64\Install.IO Pro.runtimeconfig.json
+M:\VisualStudio\Install.IO Pro\bin\Release\net6.0-windows10.0.19041.0\win-x64\Install.IO Pro.dll
+M:\VisualStudio\Install.IO Pro\bin\Release\net6.0-windows10.0.19041.0\win-x64\Install.IO Pro.pdb
+M:\VisualStudio\Install.IO Pro\bin\Release\net6.0-windows10.0.19041.0\win-x64\MagmaMc.JEF.dll
+M:\VisualStudio\Install.IO Pro\bin\Release\net6.0-windows10.0.19041.0\win-x64\Spectre.Console.dll
+M:\VisualStudio\Install.IO Pro\bin\Release\net6.0-windows10.0.19041.0\win-x64\Microsoft.Windows.SDK.NET.dll
+M:\VisualStudio\Install.IO Pro\bin\Release\net6.0-windows10.0.19041.0\win-x64\WinRT.Runtime.dll
+M:\VisualStudio\Install.IO Pro\obj\Release\net6.0-windows10.0.19041.0\win-x64\Install.IO Pro.csproj.AssemblyReference.cache
+M:\VisualStudio\Install.IO Pro\obj\Release\net6.0-windows10.0.19041.0\win-x64\Install.IO_Pro.InstallForm.resources
+M:\VisualStudio\Install.IO Pro\obj\Release\net6.0-windows10.0.19041.0\win-x64\Install.IO Pro.csproj.GenerateResource.cache
+M:\VisualStudio\Install.IO Pro\obj\Release\net6.0-windows10.0.19041.0\win-x64\Install.IO Pro.GeneratedMSBuildEditorConfig.editorconfig
+M:\VisualStudio\Install.IO Pro\obj\Release\net6.0-windows10.0.19041.0\win-x64\Install.IO Pro.AssemblyInfoInputs.cache
+M:\VisualStudio\Install.IO Pro\obj\Release\net6.0-windows10.0.19041.0\win-x64\Install.IO Pro.AssemblyInfo.cs
+M:\VisualStudio\Install.IO Pro\obj\Release\net6.0-windows10.0.19041.0\win-x64\Install.IO Pro.csproj.CoreCompileInputs.cache
+M:\VisualStudio\Install.IO Pro\obj\Release\net6.0-windows10.0.19041.0\win-x64\Install.IO Pro.csproj.CopyComplete
+M:\VisualStudio\Install.IO Pro\obj\Release\net6.0-windows10.0.19041.0\win-x64\Install.IO Pro.dll
+M:\VisualStudio\Install.IO Pro\obj\Release\net6.0-windows10.0.19041.0\win-x64\refint\Install.IO Pro.dll
+M:\VisualStudio\Install.IO Pro\obj\Release\net6.0-windows10.0.19041.0\win-x64\Install.IO Pro.pdb
+M:\VisualStudio\Install.IO Pro\obj\Release\net6.0-windows10.0.19041.0\win-x64\Install.IO Pro.genruntimeconfig.cache
+M:\VisualStudio\Install.IO Pro\obj\Release\net6.0-windows10.0.19041.0\win-x64\ref\Install.IO Pro.dll

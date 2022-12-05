@@ -1,0 +1,2 @@
+M:\VisualStudio\Install.IO Pro\publish\Install.IO Pro.pdb
+M:\VisualStudio\Install.IO Pro\publish\Install.IO Pro.exe
